@@ -14,11 +14,11 @@ Add it as a plugin in `sanity.config.ts` (or .js):
 
 ```ts
 import {defineConfig} from 'sanity'
-import {myPlugin} from 'sanity-plugin-core'
+import {core} from 'sanity-plugin-core'
 
 export default defineConfig({
   //...
-  plugins: [myPlugin({})],
+  plugins: [core({})],
 })
 ```
 

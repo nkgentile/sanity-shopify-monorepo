@@ -1,6 +1,9 @@
 import {definePlugin} from 'sanity'
+import {deskTool} from 'sanity/desk'
+import {visionTool} from '@sanity/vision'
+import {types} from './schema'
 
-interface MyPluginConfig {
+interface CoreConfig {
   /* nothing here yet */
 }
 
@@ -9,18 +12,23 @@ interface MyPluginConfig {
  *
  * ```ts
  * import {defineConfig} from 'sanity'
- * import {myPlugin} from 'sanity-plugin-core'
+ * import {core} from 'sanity-plugin-core'
  *
  * export default defineConfig({
  *   // ...
- *   plugins: [myPlugin()],
+ *   plugins: [core()],
  * })
  * ```
  */
-export const myPlugin = definePlugin<MyPluginConfig | void>((config = {}) => {
+export const core = definePlugin<CoreConfig | void>((config = {}) => {
   // eslint-disable-next-line no-console
   console.log('hello from sanity-plugin-core')
   return {
     name: 'sanity-plugin-core',
+    plugins: [deskTool(), visionTool()],
+
+    schema: {
+      types,
+    },
   }
 })

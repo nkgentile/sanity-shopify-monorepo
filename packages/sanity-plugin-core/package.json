@@ -1,5 +1,5 @@
 {
-  "name": "sanity-plugin-studio",
+  "name": "sanity-plugin-core",
   "version": "1.0.0",
   "description": "",
   "keywords": [
@@ -46,7 +46,8 @@
     "watch": "pkg-utils watch --strict"
   },
   "dependencies": {
-    "@sanity/incompatible-plugin": "^1.0.4"
+    "@sanity/incompatible-plugin": "^1.0.4",
+    "@sanity/vision": "^3.0.0"
   },
   "devDependencies": {
     "@sanity/pkg-utils": "^2.2.1",
