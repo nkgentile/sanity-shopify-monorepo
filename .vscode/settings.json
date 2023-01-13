@@ -1,0 +1,13 @@
+{
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.formatOnSave": false,
+
+    "eslint.format.enable": false,
+    "eslint.lintTask.enable": true,
+    "eslint.onIgnoredFiles": "warn",
+    "eslint.workingDirectories": [
+        { "pattern": "./projects/*/" },
+        { "pattern": "./packages/*/" }
+    ],
+    "eslint.alwaysShowStatus": true
+}
