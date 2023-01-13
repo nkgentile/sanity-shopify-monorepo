@@ -2,5 +2,5 @@
 // https://www.typescriptlang.org/docs/handbook/project-references.html#overall-structure
 {
     "files": [],
-    "references": [{ "path": "apps/storefront" }, { "path": "apps/studio" }]
+    "references": [{ "path": "apps/storefront" }, { "path": "apps/studio" }, { "path": "packages/sanity-plugin-studio" }]
 }
