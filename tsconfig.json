@@ -2,5 +2,10 @@
 // https://www.typescriptlang.org/docs/handbook/project-references.html#overall-structure
 {
     "files": [],
-    "references": [{ "path": "apps/storefront" }, { "path": "apps/studio" }, { "path": "packages/sanity-plugin-core" }]
+    "references": [
+        { "path": "apps/storefront" },
+        { "path": "apps/studio" },
+        { "path": "packages/sanity-plugin-core" },
+        { "path": "packages/vite-plugin-validate-environment" }
+    ]
 }
