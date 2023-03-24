@@ -1,12 +1,18 @@
 import {defineConfig} from 'sanity'
-import {core} from 'sanity-plugin-core'
+import {deskTool} from 'sanity/desk'
+import {visionTool} from '@sanity/vision'
+import {schemaTypes} from './schemas'
 
 export default defineConfig({
   name: 'default',
-  title: 'Noah\'s Sandbox',
+  title: 'Demo Ecommerce',
 
-  projectId: 'odh6ii6d',
-  dataset: 'production',
+  projectId: 'k4hg38xw',
+  dataset: 'migrate-storefront',
 
-  plugins: [core()],
+  plugins: [deskTool(), visionTool()],
+
+  schema: {
+    types: schemaTypes,
+  },
 })
