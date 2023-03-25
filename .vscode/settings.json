@@ -14,5 +14,4 @@
         { "pattern": "./projects/*/" },
         { "pattern": "./packages/*/" }
     ],
-    "eslint.alwaysShowStatus": true,
 }
