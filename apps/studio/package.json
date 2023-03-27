@@ -15,6 +15,7 @@
     "sanity"
   ],
   "dependencies": {
+    "@workspace/sanity": "*",
     "@sanity/vision": "^3.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -24,7 +25,6 @@
   },
   "devDependencies": {
     "@sanity/eslint-config-studio": "^2.0.1",
-    "@types/react": "^18.0.25",
     "@types/styled-components": "^5.1.26",
     "eslint": "^8.6.0",
     "prettier": "^2.8.7",
