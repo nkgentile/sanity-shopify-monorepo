@@ -11,8 +11,7 @@
     "eslint.lintTask.enable": true,
     "eslint.onIgnoredFiles": "warn",
     "eslint.workingDirectories": [
-        { "pattern": "./projects/*/" },
+        { "pattern": "./apps/*/" },
         { "pattern": "./packages/*/" }
     ],
-    "eslint.alwaysShowStatus": true,
 }

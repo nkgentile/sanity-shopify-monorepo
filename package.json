@@ -1,6 +1,5 @@
 {
-  "name": "demo-ecommerce",
-  "version": "0.0.0",
+  "name": "sanity-shopify-monorepo",
   "private": true,
   "workspaces": [
     "apps/*",
@@ -8,22 +7,19 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/sanity-io/demo-ecommerce.git"
+    "url": "https://github.com/nkgentile/sanity-shopify-monorepo.git"
   },
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
-    "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "lint": "turbo run lint"
   },
   "devDependencies": {
-    "prettier": "latest",
-    "turbo": "latest"
+    "turbo": "^1.8.5"
   },
   "engines": {
     "node": ">=16.0.0",
     "npm": ">=8.0.0"
   },
-  "dependencies": {},
   "packageManager": "npm@8.15.0"
 }
