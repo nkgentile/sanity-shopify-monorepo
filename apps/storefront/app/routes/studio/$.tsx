@@ -1,6 +1,7 @@
-import {useLoaderData} from '@remix-run/react';
+import {useCatch, useLoaderData} from '@remix-run/react';
 import type {LinksFunction, LoaderArgs} from '@shopify/remix-oxygen';
 import {lazy, type ReactElement, Suspense} from 'react';
+import {GenericError} from '~/components/GenericError';
 import styles from '~/styles/studio.css';
 
 /**
@@ -59,4 +60,14 @@ export default function Studio() {
       />
     </Suspense>
   );
+}
+
+export function CatchBoundary() {
+  const caught = useCatch();
+
+  return <GenericError error={{message: `${caught.status} ${caught.data}`}} />;
+}
+
+export function ErrorBoundary({error}: {error: Error}) {
+  return <GenericError error={error} />;
 }

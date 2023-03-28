@@ -11,9 +11,6 @@ import {
 } from '@remix-run/react';
 import {Seo} from '@shopify/hydrogen';
 import {DEFAULT_LOCALE} from '~/lib/utils';
-import {Layout} from '~/components';
-import {GenericError} from '~/components/GenericError';
-import {NotFound} from '~/components/NotFound';
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
@@ -60,18 +57,7 @@ export function CatchBoundary() {
         <Links />
       </head>
       <body>
-        <Layout
-          layout={root?.data?.layout}
-          key={`${locale.language}-${locale.country}`}
-        >
-          {isNotFound ? (
-            <NotFound type={caught.data?.pageType} />
-          ) : (
-            <GenericError
-              error={{message: `${caught.status} ${caught.data}`}}
-            />
-          )}
-        </Layout>
+        <Outlet />
         <Scripts />
       </body>
     </html>
@@ -90,9 +76,7 @@ export function ErrorBoundary({error}: {error: Error}) {
         <Links />
       </head>
       <body>
-        <Layout layout={root?.data?.layout}>
-          <GenericError error={error} />
-        </Layout>
+        <Outlet />
         <Scripts />
       </body>
     </html>

@@ -1,5 +1,4 @@
 import {Button} from './Button';
-import {FeaturedSection} from './FeaturedSection';
 import {PageHeader, Text} from './Text';
 
 export function GenericError({
@@ -37,11 +36,7 @@ export function GenericError({
             }}
           />
         )}
-        <Button width="auto" variant="secondary" to={'/'}>
-          Take me to the home page
-        </Button>
       </PageHeader>
-      <FeaturedSection />
     </>
   );
 }

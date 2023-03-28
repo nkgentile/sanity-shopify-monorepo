@@ -4,7 +4,7 @@ import {
   type LoaderArgs,
   type AppLoadContext,
 } from '@shopify/remix-oxygen';
-import {Outlet, useLoaderData} from '@remix-run/react';
+import {Outlet, useCatch, useLoaderData, useMatches} from '@remix-run/react';
 import {ShopifySalesChannel} from '@shopify/hydrogen';
 import {Layout} from '~/components';
 import styles from '~/styles/app.css';
@@ -14,6 +14,9 @@ import {DEFAULT_LOCALE, parseMenu, type EnhancedMenu} from '~/lib/utils';
 import invariant from 'tiny-invariant';
 import {Shop, Cart} from '@shopify/hydrogen/storefront-api-types';
 import {useAnalytics} from '~/hooks/useAnalytics';
+import {GenericError} from '~/components/GenericError';
+import {NotFound} from '~/components/NotFound';
+import { FeaturedSection } from '~/components/FeaturedSection';
 
 export const links: LinksFunction = () => {
   return [
@@ -288,4 +291,38 @@ export async function getCart({storefront}: AppLoadContext, cartId: string) {
   });
 
   return cart;
+}
+
+export function CatchBoundary() {
+  const [root] = useMatches();
+  const caught = useCatch();
+  const isNotFound = caught.status === 404;
+  const locale = root.data?.selectedLocale ?? DEFAULT_LOCALE;
+
+  return (
+    <Layout
+      layout={root?.data?.layout}
+      key={`${locale.language}-${locale.country}`}
+    >
+      {isNotFound ? (
+        <NotFound type={caught.data?.pageType} />
+      ) : (
+        <>
+          <GenericError error={{message: `${caught.status} ${caught.data}`}} />
+          <FeaturedSection />
+        </>
+      )}
+    </Layout>
+  );
+}
+
+export function ErrorBoundary({error}: {error: Error}) {
+  const [root] = useMatches();
+
+  return (
+    <Layout layout={root?.data?.layout}>
+      <GenericError error={error} />
+      <FeaturedSection />
+    </Layout>
+  );
 }
