@@ -8,7 +8,7 @@ import {
   useShopifyCookies,
 } from '@shopify/hydrogen';
 import {useEffect} from 'react';
-import {CartAction, I18nLocale} from '../lib/type';
+import {CartAction, I18nLocale} from '~/lib/type';
 
 export function useAnalytics(hasUserConsent: boolean, locale: I18nLocale) {
   useShopifyCookies({hasUserConsent});

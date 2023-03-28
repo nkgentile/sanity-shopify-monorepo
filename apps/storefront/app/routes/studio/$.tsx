@@ -1,5 +1,7 @@
+import type {LinksFunction} from '@shopify/remix-oxygen';
 import {lazy, type ReactElement, Suspense} from 'react';
 import type {StudioProps} from 'sanity';
+import styles from '~/styles/studio.css';
 
 /**
  * Provide a consistent fallback to prevent hydration mismatch errors.
@@ -33,6 +35,10 @@ export function headers(): HeadersInit {
     'Cache-Control': 'no-store',
   };
 }
+
+export const links: LinksFunction = () => {
+  return [{rel: 'stylesheet', href: styles}];
+};
 
 export default function Studio() {
   return (

@@ -6,6 +6,5 @@
         { "path": "apps/storefront" },
         { "path": "apps/studio" },
         { "path": "packages/sanity" },
-        { "path": "packages/vite-plugin-validate-environment" }
     ]
 }

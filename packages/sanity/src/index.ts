@@ -13,11 +13,15 @@ type SanityConfig = {
   title?: string;
 }
 
+/**
+ * Wrap whatever Sanity Studio configuration your project requires.
+ * 
+ * In this example, it's a single workspace but adjust as necessary.
+ */
 export function defineSanityConfig(config: SanityConfig){
   const {projectId, dataset, title = 'Sanity Studio'} = config;
 
     return defineConfig({
-        name: 'default',
         title,
       
         projectId,
