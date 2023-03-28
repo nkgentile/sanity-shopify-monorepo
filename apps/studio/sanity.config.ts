@@ -1,6 +1,6 @@
 import {defineSanityConfig} from '@workspace/sanity'
 
 export default defineSanityConfig({
-  projectId: 'k4hg38xw',
-  dataset: 'migrate-storefront',
+  projectId: process.env.SANITY_STUDIO_PROJECT_ID!,
+  dataset: process.env.SANITY_STUDIO_DATASET!,
 })

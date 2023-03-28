@@ -2,14 +2,19 @@
  * To keep the worker bundle size small, only load
  * the Studio and its configuration in the client
  */
-import {Studio, type StudioProps} from 'sanity';
+import {Studio, type StudioProps, type SourceOptions} from 'sanity';
 import {defineSanityConfig} from '@workspace/sanity';
 
-export function SanityStudio(props: Omit<StudioProps, 'config'>) {
+type SanityStudioProps = Omit<StudioProps, 'config'> &
+  Pick<SourceOptions, 'projectId' | 'dataset'>;
+
+export function SanityStudio(props: SanityStudioProps) {
+  const {projectId, dataset, ...rest} = props;
+
   const config = defineSanityConfig({
-    projectId: 'k4hg38xw',
-    dataset: 'migrate-storefront',
+    projectId,
+    dataset,
   });
 
-  return <Studio {...props} config={config} />;
+  return <Studio {...rest} config={config} />;
 }

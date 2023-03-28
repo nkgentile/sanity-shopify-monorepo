@@ -1,6 +1,6 @@
-import type {LinksFunction} from '@shopify/remix-oxygen';
+import {useLoaderData} from '@remix-run/react';
+import type {LinksFunction, LoaderArgs} from '@shopify/remix-oxygen';
 import {lazy, type ReactElement, Suspense} from 'react';
-import type {StudioProps} from 'sanity';
 import styles from '~/styles/studio.css';
 
 /**
@@ -17,7 +17,7 @@ function SanityStudioFallback(): ReactElement {
 const SanityStudio =
   typeof document === 'undefined'
     ? SanityStudioFallback
-    : lazy<(props: Omit<StudioProps, 'config'>) => ReactElement>(() =>
+    : lazy(() =>
         /**
          * `lazy` expects the component as the default export
          * @see https://react.dev/reference/react/lazy
@@ -26,6 +26,13 @@ const SanityStudio =
           default: m.SanityStudio,
         })),
       );
+
+export function loader({context}: LoaderArgs) {
+  return {
+    projectId: context.env.PUBLIC_SANITY_PROJECT_ID!,
+    dataset: context.env.PUBLIC_SANITY_DATASET!,
+  };
+}
 
 /**
  * (Optional) Prevent Studio from being cached
@@ -41,9 +48,15 @@ export const links: LinksFunction = () => {
 };
 
 export default function Studio() {
+  const {projectId, dataset} = useLoaderData<typeof loader>();
+
   return (
     <Suspense fallback={<SanityStudioFallback />}>
-      <SanityStudio basePath="/studio" />
+      <SanityStudio
+        basePath="/studio"
+        projectId={projectId}
+        dataset={dataset}
+      />
     </Suspense>
   );
 }
