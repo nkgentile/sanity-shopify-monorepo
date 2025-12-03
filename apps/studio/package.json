@@ -2,37 +2,42 @@
   "name": "studio",
   "private": true,
   "version": "1.0.0",
-  "main": "package.json",
-  "license": "UNLICENSED",
+  "license": "MIT",
+  "sideEffects": false,
+  "type": "module",
   "scripts": {
     "dev": "sanity dev",
     "start": "sanity start",
     "build": "sanity build",
     "deploy": "sanity deploy",
-    "deploy-graphql": "sanity graphql deploy"
+    "lint": "eslint --cache --config eslint.config.mjs .",
+    "typecheck": "tsc --noEmit",
+    "extract": "sanity schema extract"
   },
-  "keywords": [
-    "sanity"
-  ],
   "dependencies": {
-    "@workspace/sanity": "*",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-is": "^18.2.0",
-    "sanity": "^3.0.0",
-    "styled-components": "^5.2.0"
+    "@sanity/asset-utils": "^2.3.0",
+    "@sanity/color-input": "^5.0.0",
+    "@sanity/icons": "^3.7.4",
+    "@sanity/ui": "^3.1.11",
+    "@sanity/vision": "^4.20.0",
+    "lodash.get": "^4.4.2",
+    "pluralize-esm": "^9.0.5",
+    "react": "^19.2",
+    "react-dom": "^19.2",
+    "sanity": "^4.20.0",
+    "sanity-plugin-hotspot-array": "^3.0.1",
+    "sanity-plugin-media": "^4.0.0",
+    "slug": "^11.0.1",
+    "styled-components": "^6.1.19"
   },
   "devDependencies": {
-    "@sanity/eslint-config-studio": "^2.0.1",
-    "@types/styled-components": "^5.1.26",
-    "eslint": "^8.6.0",
-    "prettier": "^2.8.7",
-    "typescript": "^4.0.0"
-  },
-  "prettier": {
-    "semi": false,
-    "printWidth": 100,
-    "bracketSpacing": false,
-    "singleQuote": true
+    "@portabletext/types": "^3.0.0",
+    "@sanity/eslint-config-studio": "^5.0.2",
+    "@types/lodash.get": "^4.4.9",
+    "@types/react": "^19.2",
+    "@types/slug": "^5.0.9",
+    "babel-plugin-react-compiler": "^1.0.0",
+    "eslint": "^9.39.1",
+    "typescript": "^5.9.3"
   }
 }

@@ -1,25 +1,26 @@
 {
-  "name": "sanity-shopify-monorepo",
+  "name": "root",
   "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/nkgentile/sanity-shopify-monorepo.git"
-  },
+  "type": "module",
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev --parallel",
-    "lint": "turbo run lint"
+    "dev": "turbo --ui tui dev",
+    "watch:apps": "turbo --ui tui dev --filter=\"./apps/**\"",
+    "build": "turbo build",
+    "typecheck": "turbo typecheck",
+    "lint": "turbo lint",
+    "format": "prettier --cache --write --ignore-unknown ."
   },
   "devDependencies": {
-    "turbo": "^1.8.5"
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.7.3",
+    "prettier-plugin-packagejson": "^2.5.20",
+    "turbo": "^2.6.1"
   },
-  "engines": {
-    "node": ">=16.0.0",
-    "npm": ">=8.0.0"
-  },
-  "packageManager": "npm@8.15.0"
+  "packageManager": "pnpm@10.24.0",
+  "pnpm": {
+    "overrides": {
+      "styled-components": "npm:@sanity/css-in-js@^6.1.26"
+    }
+  }
 }

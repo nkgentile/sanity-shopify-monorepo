@@ -1,22 +1,24 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "pipeline": {
+  "tasks": {
     "build": {
-      "dependsOn": ["^build"],
-      "outputs": ["dist/**"]
+      "outputs": ["dist"]
     },
     "lint": {
+      "cache": false,
+      "outputs": [".eslintcache"]
+    },
+    "typecheck": {
+      "cache": false,
       "outputs": []
     },
     "dev": {
-      "dependsOn": ["^build"],
-      "cache": false
+      "dependsOn": ["studio#extract"],
+      "cache": false,
+      "persistent": true
     },
-    "watch": {
-      "cache": false
-    },
-    "preview": {
-      "cache": false
+    "studio#extract": {
+      "outputs": ["schema.json"]
     }
   }
 }

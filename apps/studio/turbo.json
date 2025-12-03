@@ -1,0 +1,13 @@
+{
+  "$schema": "https://turborepo.com/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "outputs": [".sanity/**", "dist/**"]
+    },
+    "deploy": {
+      "env": ["SANITY_STUDIO_*", "SANITY_AUTH_TOKEN"],
+      "outputs": [".sanity/**", "dist/**"]
+    }
+  }
+}
